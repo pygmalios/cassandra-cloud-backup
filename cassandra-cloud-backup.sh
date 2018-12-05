@@ -550,7 +550,7 @@ function parse_yaml_backup() {
           'saved_caches_directory' \
           'incremental_backups' \
           'native_transport_port' \
-          'rpc_address')
+          'listen_address')
   parse_yaml ${YAML_FILE}
 }
 
@@ -664,7 +664,7 @@ function take_snapshot() {
 # Export the whole schema for safety
 function export_schema() {
   loginfo "Exporting Schema to ${SCHEMA_DIR}/${DATE}-schema.cql"
-  local cqlsh_host=${rpc_address:-$CQLSH_DEFAULT_HOST}
+  local cqlsh_host=${listen_address:-$CQLSH_DEFAULT_HOST}
   local cmd
   cmd="${CQLSH} ${cqlsh_host} ${native_transport_port} ${USER_OPTIONS} -e 'DESC SCHEMA;'"
   if ${DRY_RUN}; then
