@@ -783,7 +783,7 @@ function clear_snapshots() {
   if ${DRY_RUN}; then
     loginfo "DRY RUN: did not clear snapshots"
   else
-    $NODETOOL ${USER_OPTIONS} clearsnapshot
+    $NODETOOL ${USER_OPTIONS} clearsnapshot --all
   fi
 }
 
